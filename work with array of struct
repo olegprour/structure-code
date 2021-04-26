@@ -1,0 +1,78 @@
+#include <iostream>
+#include <math.h>
+#include <conio.h>
+//#include <sting>
+#define eof -1
+#define maxline 1000
+using namespace std;
+//////////////////////////////////////////////////////////
+ float mult(int st[])
+{
+	float s;
+     s=0;
+	for(int i=0;i<5;i++) s=s+st[i];
+    return s/5;
+ }
+ //////////////////////////////////////////////////////////////////
+int loos(int mr[])
+{
+	int j;
+     j=0;
+	for(int i=0;i<5;i++) 
+	{	
+	if (mr[i]==2) 	j++;
+	}
+		return j;
+ }
+///////////////////////////////////////////////////////////////
+bool best(int mr[])
+{
+	bool b;
+     b=true;
+	for(int i=0;i<5;i++) 
+	{	
+	if (mr[i]==3 || mr[i]==2) 	b=false;
+	}
+		return b;
+ }
+ 
+void main()
+{
+
+struct St
+{
+ char name[10];
+ int numb;
+}; 
+
+int count;
+St s = {"vasya",65};
+cout<<s.name<<"   "<<s.numb;
+
+cout<<"Enter nummer  of students in group:\n ";
+cin>>count;
+
+St *gr= new St[count];
+
+for(int i=0;i<count;i++)
+{
+	cout<<"Enter data  of student:\n ";
+	cin>>gr[i].name;
+	cin>>gr[i].numb;
+    for(int j=0;j<5;j++) cin>>gr[i].marks[j];
+}
+
+for(int i=0;i<count;i++)
+{	int *m = gr[i].marks;
+	if (best(m))
+	{
+     cout<<gr[i].name<<endl;
+     cout<<gr[i].numb<<endl;
+     cout<<mult(m)<<endl;
+	}	
+}
+
+
+system("pause");
+}
+
